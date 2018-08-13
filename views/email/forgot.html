@@ -384,7 +384,7 @@
           <div class="content">
             <span class="brand">
               <a href="#">
-                Gr-dev Store
+                Gr Store
               </a>
             </span>
           </div>
