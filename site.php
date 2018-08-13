@@ -2,12 +2,17 @@
 
 use \Egrdev\Page;
 use \Egrdev\Model\Category;
+use \Egrdev\Model\Product;
 
 $app->get('/', function() {
-    
+
+	$product = Product::ListAll();
+
 	$page = new Page();
 
-	$page->setTpl("index");
+	$page->setTpl("index", [
+		'products'=>Product::checkList($product)
+	]);
 
 });
 
