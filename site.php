@@ -3,6 +3,7 @@
 use \Egrdev\Page;
 use \Egrdev\Model\Category;
 use \Egrdev\Model\Product;
+use \Egrdev\Model\Cart;
 
 $app->get('/', function() {
 
@@ -58,6 +59,15 @@ $app->get("/products/:desurl", function($desurl){
 		'categories'=>$product->getCategories()
 	]);
 
+});
+
+$app->get("/cart", function(){
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("cart");
 });
 
 ?>
