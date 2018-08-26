@@ -68,7 +68,7 @@ class User extends Model{
 		}
 
 		$data = $results[0];
-		 
+
 		if(password_verify($password, $data["despassword"]) === true) 
 		{
 
@@ -177,7 +177,7 @@ class User extends Model{
 		));
 	}
 
-	public static function getForgot($email){
+	public static function getForgot($email, $inadmin = true){
 		
 		$sql = new Sql();
 
@@ -213,7 +213,12 @@ class User extends Model{
 				$iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
 				$code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
 				$result = base64_encode($iv.$code);
-				$link = "http://www.grcodecommerce.com/admin/forgot/reset?code=$result";
+
+				if($inadmin === true) {
+					$link = "http://www.grcodecommerce.com/admin/forgot/reset?code=$result";
+				} else {
+					$link = "http://www.grcodecommerce.com/forgot/reset?code=$result";
+				}
 
 				$mailer = new Mailer($data["desemail"],$data["desperson"],"Redefinir Senha da Gr-dev Store","forgot", 
 					array(
