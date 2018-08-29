@@ -1,6 +1,7 @@
 <?php  
 
 use \Egrdev\Model\User;
+use \Egrdev\Model\Cart;
 
 function formatPrice($vlPrice)
 {
@@ -21,4 +22,19 @@ function getUserName(){
 	return $user->getdesperson();
 }
 
+function getCartNrQtd() {
+	$cart = Cart::getFromSession();
+
+	$totals = $cart->getProductTotals();
+
+	return $totals['nrqtd'];
+}
+
+function getCartSubtotal() {
+	$cart = Cart::getFromSession();
+
+	$totals = $cart->getProductTotals();
+
+	return formatPrice($totals['vlprice']);
+}
 ?>
