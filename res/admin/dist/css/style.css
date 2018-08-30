@@ -1,0 +1,12 @@
+.logo h1 {
+    font-size: 40px;
+    margin: 30px 0;font-weight: 400;
+    display: inline;
+}
+.logo h1 {
+    color: #999;
+}
+.logo h1:hover {text-decoration: none;opacity: .7}
+.logo h1 span {
+    color: #e67e22;
+}

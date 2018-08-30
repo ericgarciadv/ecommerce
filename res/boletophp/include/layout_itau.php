@@ -3,6 +3,7 @@
 <HEAD>
 <TITLE><?php echo $dadosboleto["identificacao"]; ?></TITLE>
 <META charset="utf-8">
+<link rel="stylesheet" href="/res/admin/dist/css/style.css"> 
 <style type=text/css>
 <!--.cp {  font: bold 10px Arial; color: black}
 <!--.ti {  font: 9px Arial, Helvetica, sans-serif}
@@ -31,7 +32,7 @@ de Impressão</DIV></TD></TR><TR><TD valign=top class=cp><DIV ALIGN="left">
 do Sacado</b></div></TD></tr></tbody></table><table width=666 cellspacing=5 cellpadding=0 border=0><tr><td width=41></TD></tr></table>
 <table width=666 cellspacing=5 cellpadding=0 border=0 align=Default>
   <tr>
-    <td width=41><IMG SRC="/res/site/img/grstore.png"></td>
+    <td width=41><div class="logo"><h1><span>Gr</span> Store</h1></div></td>
     <td class=ti width=455><?php echo $dadosboleto["identificacao"]; ?> <?php echo isset($dadosboleto["cpf_cnpj"]) ? "<br>".$dadosboleto["cpf_cnpj"] : '' ?><br>
 	<?php echo $dadosboleto["endereco"]; ?><br>
 	<?php echo $dadosboleto["cidade_uf"]; ?><br>

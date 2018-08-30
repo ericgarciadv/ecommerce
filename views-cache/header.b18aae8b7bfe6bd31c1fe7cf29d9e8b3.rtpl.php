@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="/res/admin/dist/css/skins/skin-blue.min.css">
 
+    <link rel="stylesheet" href="/res/admin/dist/css/style.css"> 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -259,18 +261,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
           <li><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categorias</span></a></li>
           <li><a href="/admin/products"><i class="fa fa-link"></i> <span>Produtos</span></a></li>
-          
-          <li class="treeview">
-            <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#">Link in level 2</a></li>
-              <li><a href="#">Link in level 2</a></li>
-            </ul>
-          </li>
+          <li><a href="/admin/orders"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span></a></li>
+      
         </ul>
         <!-- /.sidebar-menu -->
       </section>
