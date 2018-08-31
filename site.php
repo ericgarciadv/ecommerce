@@ -11,7 +11,7 @@ use \Egrdev\Model\OrderStatus;
 
 $app->get('/', function() {
 
-	$product = Product::ListAll(); 
+	$product = Product::listAll(); 
 
 	$page = new Page();
 
@@ -19,6 +19,31 @@ $app->get('/', function() {
 		'products'=>Product::checkList($product)
 	]);
 
+});
+
+$app->get("/products", function(){
+
+	$page = (isset($_GET["page"])) ? (int)$_GET['page'] : 1;
+
+	$product = new Product();
+
+	$pagination = $product->getProductsPage($page);
+
+	$pages = [];
+
+	for ($i=1; $i <= $pagination['pages'] ; $i++) { 
+		array_push($pages, [
+			'link'=>'/products?page='.$i,
+			'page'=>$i
+		]);
+	}
+
+	$page = new Page();
+
+	$page->setTpl("list-products", [
+		'products'=>$pagination['data'],
+		'pages'=>$pages
+	]);
 });
 
 $app->get("/categories/:idcategory", function($idcategory){
