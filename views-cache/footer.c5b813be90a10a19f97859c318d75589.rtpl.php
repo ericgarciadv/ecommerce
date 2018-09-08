@@ -18,9 +18,9 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Navegação </h2>
                         <ul>
-                            <li><a href="#">Minha Conta</a></li>
-                            <li><a href="#">Meus Pedidos</a></li>
-                            <li><a href="#">Lista de Desejos</a></li>
+                            <li><a href="/profile">Minha Conta</a></li>
+                            <li><a href="/cart">Meus Pedidos</a></li>
+                            <li class="btn" disabled="disabled"><a href="#">Lista de Desejos</a></li>
                         </ul>                        
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         <div class="newsletter-form">
                             <form action="#">
                                 <input type="email" placeholder="Type your email">
-                                <input type="submit" value="Subscribe">
+                                <input class="btn" disabled="disabled" type="submit" value="Subscribe">
                             </form>
                         </div>
                     </div>

@@ -43,4 +43,29 @@ function getCartSubtotal() {
 	return formatPrice($totals['vlprice']);
 }
 
+function isHomeMenuActive(){
+
+	if(isset($_SESSION['menuHome']) && $_SESSION['menuHome'] != NULL){
+		return "active";
+	} else {
+		return "";
+	}
+}
+
+function isProductsMenuActive(){
+	if(isset($_SESSION['menuProducts']) && $_SESSION['menuProducts'] != NULL){
+		return "active";
+	} else {
+		return "";
+	}
+}
+
+function isCartMenuActive(){
+	if(isset($_SESSION['menuCart']) && $_SESSION['menuCart'] != NULL){
+		return "active";
+	} else {
+		return "";
+	}
+}
+
 ?>

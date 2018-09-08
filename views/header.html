@@ -41,7 +41,7 @@
                     <div class="user-menu">
                         <ul>
                             <li><a href="/profile"><i class="fa fa-user"></i> Minha Conta</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
+                            <li class="btn" disabled="disabled"><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
                             <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Meu Carrinho</a></li>
                             {if="checkLogin(false)"}
                             <li><a href="/profile"><i class="fa fa-user"></i> {function="getUserName()"}</a></li>
@@ -56,7 +56,7 @@
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
+                            <li class="dropdown dropdown-small btn" disabled="disabled">
                                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">moeda :</span><span class="value">BRL </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">BRL</a></li>
@@ -64,7 +64,7 @@
                                 </ul>
                             </li>
 
-                            <li class="dropdown dropdown-small">
+                            <li class="dropdown dropdown-small btn" disabled="disabled">
                                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">linguagem :</span><span class="value">Português </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Português</a></li>
@@ -110,9 +110,9 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/products">Produtos</a></li>
-                        <li><a href="/cart">Carrinho</a></li>
+                        <li class={function="isHomeMenuActive()"}><a href="/">Home</a></li>
+                        <li class={function="isProductsMenuActive()"}><a href="/products">Produtos</a></li>
+                        <li class={function="isCartMenuActive()"}><a href="/cart">Carrinho</a></li>
                     </ul>
                 </div>  
             </div>

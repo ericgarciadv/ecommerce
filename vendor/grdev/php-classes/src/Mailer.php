@@ -2,7 +2,7 @@
 
 namespace Egrdev;
 
-use Rain\Tpl;
+use \Rain\Tpl;
 
 
 class Mailer {

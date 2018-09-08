@@ -11,6 +11,11 @@ use \Egrdev\Model\OrderStatus;
 
 $app->get('/', function() {
 
+	$_SESSION['menuHome'] = "active";
+	$_SESSION['menuProducts'] = NULL;
+	$_SESSION['menuCart'] = NULL;
+
+
 	$product = Product::listAll(); 
 
 	$page = new Page();
@@ -22,6 +27,10 @@ $app->get('/', function() {
 });
 
 $app->get("/products", function(){
+
+	$_SESSION['menuHome'] = NULL;
+	$_SESSION['menuProducts'] = "products";
+	$_SESSION['menuCart'] = NULL;
 
 	$page = (isset($_GET["page"])) ? (int)$_GET['page'] : 1;
 
@@ -91,6 +100,10 @@ $app->get("/products/:desurl", function($desurl){
 });
 
 $app->get("/cart", function(){
+
+	$_SESSION['menuHome'] = NULL;
+	$_SESSION['menuProducts'] = NULL;
+	$_SESSION['menuCart'] = "active";
 
 	$cart = Cart::getFromSession();
 
@@ -163,9 +176,11 @@ $app->get("/checkout", function(){
 	User::verifyLogin(false);
 
 	$address = new Address();
+
 	$cart = Cart::getFromSession();
 
-	if(isset($_GET['zipcode'])) {
+
+	if(!isset($_GET['zipcode'])) {
 		$_GET['zipcode'] = $cart->getdeszipcode();
 	}
 
@@ -409,6 +424,12 @@ $app->post("/checkout", function(){
 		exit;
 	}
 
+	if (!isset($_POST['desnumber']) || $_POST['desnumber'] === '') {
+		Address::setMsgError("Informe o numero.");
+		header("Location: /checkout");
+		exit;
+	}
+
 	if (!isset($_POST['desdistrict']) || $_POST['desdistrict'] === '') {
 		Address::setMsgError("Informe o bairro.");
 		header("Location: /checkout");
@@ -505,8 +526,8 @@ $app->get("/boleto/:idorder", function($idorder){
 
 	// DADOS DO SEU CLIENTE
 	$dadosboleto["sacado"] = utf8_encode($order->getdesperson());
-	$dadosboleto["endereco1"] = utf8_encode($order->getdesaddress() . " " . $order->getdesdistrict());
-	$dadosboleto["endereco2"] = utf8_encode($order->getdescity() . "-" . $order->desstate() . "-" . $order->descountry()) . " - CEP: " . $order->getdeszipcode();
+	$dadosboleto["endereco1"] = utf8_encode($order->getdesaddress() . ",". " " . $order->getdesnumber() . " - " . $order->getdesdistrict());
+	$dadosboleto["endereco2"] = utf8_encode($order->getdescity() . "-" . $order->desstate() . "-" . $order->descountry()) . " CEP: " . $order->getdeszipcode();
 
 	// INFORMACOES PARA O CLIENTE
 	$dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja Gr Store E-commerce";

@@ -20,7 +20,9 @@ $app->get('/admin/login', function() {
 		"footer"=>false
 	]);
 
-	$page->setTpl("login");
+	$page->setTpl("login", [
+		'msgError'=>User::getError(),
+	]);
 
 });
 
@@ -35,7 +37,13 @@ $app->get('/admin/logout', function() {
 
 $app->post('/admin/login', function() {
 
-	User::login($_POST["login"],$_POST["password"]);
+	try {
+		User::login($_POST["login"],$_POST["password"]);	
+	} catch (Exception $e) {
+		User::setError("Usuário ou senha inválida.");
+		header("Location: /admin/login");
+		exit;
+	}
 
 	header("Location: /admin");
 	exit;

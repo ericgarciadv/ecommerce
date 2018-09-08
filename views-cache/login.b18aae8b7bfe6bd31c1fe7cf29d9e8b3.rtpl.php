@@ -30,6 +30,12 @@
     <a href="/res/admin/index2.html"><b>Admin</b>LTE</a>
   </div>
   <!-- /.login-logo -->
+  <?php if( $msgError != '' ){ ?>
+  <div class="alert alert-danger alert-dismissible" style="margin:10px">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <p><?php echo htmlspecialchars( $msgError, ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+  </div>
+  <?php } ?>
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
@@ -57,18 +63,9 @@
         <!-- /.col -->
       </div>
     </form>
-
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
     <!-- /.social-auth-links -->
 
     <a href="/admin/forgot">Esqueceu a senha?</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
 
   </div>
   <!-- /.login-box-body -->
